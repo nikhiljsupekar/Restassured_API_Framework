@@ -41,19 +41,29 @@ src/test/java/com/automationexercise/api/tests/
 ```
 
 `LoginApiTest` provisions its own throwaway user in `@BeforeClass`/`@AfterClass`.
-`AccountApiTest` chains create -> get -> update -> delete via `dependsOnMethods`
-so the lifecycle always runs in order even under `testng.xml`'s `parallel="classes"`.
+`AccountApiTest` chains create -> get -> update -> delete via `dependsOnMethods`.
+`testng.xml` runs sequentially (`parallel="none"`) — automationexercise.com is a
+public demo site behind Cloudflare and returns sporadic 520s under concurrent load.
 
 ## Prerequisites
 
 - JDK 17+ (JDK 25 is installed and works fine via `maven.compiler.release=17`)
-- Maven 3.9+ — not currently installed on this machine. Install with either:
+- Maven 3.9+ — not currently installed on this machine. `winget install Apache.Maven`
+  does **not** work (no such package in the winget repository as of this writing),
+  and Chocolatey/Scoop aren't installed either. Pick one:
+
+  **Option A — manual install (most reliable on Windows):**
+  1. Download the binary zip from https://maven.apache.org/download.cgi
+     (e.g. `apache-maven-3.9.16-bin.zip`).
+  2. Extract it somewhere permanent, e.g. `C:\Tools\apache-maven-3.9.16`.
+  3. Add `C:\Tools\apache-maven-3.9.16\bin` to your user `PATH`
+     (Settings → System → About → Advanced system settings → Environment Variables).
+  4. Open a **new** terminal and confirm with `mvn -version`.
+
+  **Option B — if you already use a package manager:**
   ```powershell
-  winget install Apache.Maven
-  ```
-  or
-  ```powershell
-  choco install maven
+  choco install maven      # Chocolatey
+  scoop install maven      # Scoop
   ```
   Then open a new terminal so `mvn` is on PATH.
 - (Optional, for viewing reports locally) [Allure commandline](https://allurereport.org/docs/install/):
