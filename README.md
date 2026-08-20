@@ -93,9 +93,14 @@ allure serve target/allure-results
 
 ## CI
 
-`.github/workflows/api-tests.yml` runs the suite on every push/PR to `main` and
-publishes the Allure report to the `gh-pages` branch (served via GitHub Pages)
+`.github/workflows/api-tests.yml` runs the suite on every push/PR to `main`,
+generates the Allure report via `mvn allure:report`, and deploys it straight
+to GitHub Pages using `actions/deploy-pages` (no `gh-pages` branch involved)
 plus uploads raw Surefire results as a build artifact.
+
+**One-time setup:** in the repo's Settings → Pages, set Source to
+**"GitHub Actions"** (not "Deploy from a branch") — the workflow's `deploy`
+job needs that to publish successfully.
 
 ## Configuration
 
