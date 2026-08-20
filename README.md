@@ -7,6 +7,10 @@ Rest Assured + TestNG + Allure framework covering all 14 endpoints listed at
 > status lives in the JSON body's `responseCode` field (200/201/400/404/405).
 > Every test asserts on `responseCode`, not just the HTTP status line.
 
+New to this framework? [`docs/Rest-Assured-Framework-Guide.pdf`](docs/Rest-Assured-Framework-Guide.pdf)
+walks through the architecture, how it was built step by step, and two real
+bugs found while validating it against the live API.
+
 ## Coverage
 
 | # | Endpoint | Test class |
