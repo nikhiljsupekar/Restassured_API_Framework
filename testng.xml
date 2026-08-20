@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- parallel execution is deliberately off: automationexercise.com is a public
+     demo site fronted by Cloudflare and returns sporadic 520s under concurrent load -->
+<suite name="AutomationExercise API Suite" verbose="1" parallel="none">
+    <test name="AutomationExercise API Tests">
+        <classes>
+            <class name="com.automationexercise.api.tests.ProductsApiTest"/>
+            <class name="com.automationexercise.api.tests.BrandsApiTest"/>
+            <class name="com.automationexercise.api.tests.SearchProductApiTest"/>
+            <class name="com.automationexercise.api.tests.LoginApiTest"/>
+            <class name="com.automationexercise.api.tests.AccountApiTest"/>
+        </classes>
+    </test>
+</suite>
